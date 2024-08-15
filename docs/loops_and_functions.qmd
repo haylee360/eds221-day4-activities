@@ -1,0 +1,121 @@
+---
+title: "Loops and Functions"
+author: "Haylee Oyler"
+editor: source
+format: html
+execute:
+  warning: false
+  message: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# Day 4 tasks and activities
+
+#### Setup
+```{r}
+library(tidyverse)
+```
+
+## For loops revisited
+
+```{r}
+# Task 1
+weekdays <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+transects <- c("Transect A", "Transect B", "Transect C")
+
+day_trans_m = matrix(data=NA, nrow=7, ncol=3, byrow = FALSE) 
+
+for (i in seq_along(transects)) {
+  for (j in seq_along(weekdays)) {
+   comb <- return(paste(weekdays[j], "-", transects[i])) 
+    day_trans_m[j, i] <- comb
+  }
+} 
+
+day_trans_m
+```
+
+## Functions introduced
+
+```{r}
+# Task 2
+force <- function(mass, accel) {
+  force <- mass * accel
+  return(paste("The resulting force is", force, "Newtons"))
+}
+force(40, 20)
+```
+
+```{r}
+# Task 3
+fish_parms <- data.frame(sci_name = c("Chanos chanos",
+                                      "Sphyraena barracuda",
+                                      "Caranx ignobilis"),
+                         common_name = c("Milkfish", 
+                                         "Great barracuda", 
+                                         "Giant trevally"),
+                         a_est = c(0.0905, 0.0181, 0.0353),
+                         b_est = c(2.52, 3.27, 3.05))
+
+fish_weight <- function(fish_name, tot_length) {
+  
+  fish_select <- filter(fish_parms, common_name == fish_name)
+  
+  weight <- fish_select$a_est * (tot_length^fish_select$b_est)
+  
+  return(weight)
+}
+
+fish_weight("Giant trevally", 10)
+```
+
+```{r}
+# Works over a range of weights!
+vec100 <- c(1:100)
+milkfish_weights <- fish_weight("Milkfish", vec100)
+#milkfish_weights
+```
+
+```{r}
+# Task 4
+wave_power_deep <- function(wave_height, period) {
+  power <- 0.5 * (wave_height^2) * period 
+  return(power)
+}
+
+height_vec <- seq(from = 0, to = 3, by = 0.2)
+wave_power_deep(height_vec, 8)
+```
+
+```{r}
+# Task 5
+wave_power_shallow <- function(wave_height, period) {
+  power <- 0.81 * (wave_height^2) * period 
+  return(power)
+}
+
+# depth > 12 = deep 
+# depth <= 12 shallow 
+
+wave_power_all <- function(wave_height, period, depth) {
+  if (depth > 12){
+    message("Deep water equation was used")
+  }
+  
+  if (depth <= 12) {
+    message("Shallow water equation was used")
+  }
+  
+  if (depth > 12) {
+    power <- 0.5 * (wave_height^2) * period 
+  return(power)
+  } else if (depth <= 12) {
+    power <- 0.81 * (wave_height^2) * period 
+  return(power)
+  }
+}
+
+wave_power_all(3, 8, 15)
+```
+
