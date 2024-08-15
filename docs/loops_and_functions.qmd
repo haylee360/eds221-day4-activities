@@ -24,11 +24,11 @@ library(tidyverse)
 weekdays <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 transects <- c("Transect A", "Transect B", "Transect C")
 
-day_trans_m = matrix(data=NA, nrow=7, ncol=3, byrow = FALSE) 
+day_trans_m = matrix(nrow=7, ncol=3, byrow = FALSE) 
 
 for (i in seq_along(transects)) {
   for (j in seq_along(weekdays)) {
-   comb <- return(paste(weekdays[j], "-", transects[i])) 
+   comb <- paste(weekdays[j], "-", transects[i]) 
     day_trans_m[j, i] <- comb
   }
 } 

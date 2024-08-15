@@ -118,25 +118,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>weekdays <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>, <span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>transects <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Transect A"</span>, <span class="st">"Transect B"</span>, <span class="st">"Transect C"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>day_trans_m <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>, <span class="at">nrow=</span><span class="dv">7</span>, <span class="at">ncol=</span><span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>day_trans_m <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">7</span>, <span class="at">ncol=</span><span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>) </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(transects)) {</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_along</span>(weekdays)) {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>   comb <span class="ot">&lt;-</span> <span class="fu">return</span>(<span class="fu">paste</span>(weekdays[j], <span class="st">"-"</span>, transects[i])) </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>   comb <span class="ot">&lt;-</span> <span class="fu">paste</span>(weekdays[j], <span class="st">"-"</span>, transects[i]) </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    day_trans_m[j, i] <span class="ot">&lt;-</span> comb</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>} </span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>day_trans_m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3]
-[1,]   NA   NA   NA
-[2,]   NA   NA   NA
-[3,]   NA   NA   NA
-[4,]   NA   NA   NA
-[5,]   NA   NA   NA
-[6,]   NA   NA   NA
-[7,]   NA   NA   NA</code></pre>
+<pre><code>     [,1]                     [,2]                     [,3]                    
+[1,] "Monday - Transect A"    "Monday - Transect B"    "Monday - Transect C"   
+[2,] "Tuesday - Transect A"   "Tuesday - Transect B"   "Tuesday - Transect C"  
+[3,] "Wednesday - Transect A" "Wednesday - Transect B" "Wednesday - Transect C"
+[4,] "Thursday - Transect A"  "Thursday - Transect B"  "Thursday - Transect C" 
+[5,] "Friday - Transect A"    "Friday - Transect B"    "Friday - Transect C"   
+[6,] "Saturday - Transect A"  "Saturday - Transect B"  "Saturday - Transect C" 
+[7,] "Sunday - Transect A"    "Sunday - Transect B"    "Sunday - Transect C"   </code></pre>
 </div>
 </div>
 </section>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Works over a range of weights!</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>vec100 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>milkfish_weights <span class="ot">&lt;-</span> <span class="fu">fish_weight</span>(<span class="st">"Milkfish"</span>, vec100)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(milkfish_weights)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#milkfish_weights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 4</span></span>
